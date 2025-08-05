@@ -138,7 +138,7 @@ const Hero = ({ activeSection, setActiveSection }) => {
               >
                 <Heart className="w-5 h-5 mr-2 text-red-500" />
               </motion.div>
-              Trusted by 20000+ Patients Worldwide
+              Trusted by {patients||5000}+ Patients Worldwide
             </motion.div>
 
             <motion.div
