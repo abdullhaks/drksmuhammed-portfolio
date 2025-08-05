@@ -41,11 +41,11 @@ const Hero = ({ activeSection, setActiveSection }) => {
   const { scrollY } = useScroll();
   const y1 = useTransform(scrollY, [0, 500], [0, 150]);
   const y2 = useTransform(scrollY, [0, 500], [0, -150]);
-  const opacity = useTransform(scrollY, [0, 1400], [1, 0]);
-  const now =  new Date();
-  const start = new Date("2015-1-1");
-  const exp = now.getFullYear()-start.getFullYear();
-  const patients = exp*500;
+  const opacity = useTransform(scrollY, [0, 2000], [1, 0]);
+  const now = new Date();
+  const start = new Date('2015-01-01'); // Use ISO format
+  const exp = now.getFullYear() - start.getFullYear();
+  const patients = isNaN(exp) ? 5000 : exp * 500;
 
 
   function handleMessage (){
@@ -138,7 +138,7 @@ const Hero = ({ activeSection, setActiveSection }) => {
               >
                 <Heart className="w-5 h-5 mr-2 text-red-500" />
               </motion.div>
-              Trusted by {`${patients}`||"5000"}+ Patients Worldwide
+              Trusted by {patients.toLocaleString()}+ Patients Worldwide
             </motion.div>
 
             <motion.div
@@ -246,9 +246,9 @@ const Hero = ({ activeSection, setActiveSection }) => {
               transition={{ duration: 0.8, delay: 1.1 }}
             >
               {[
-                { value: `${patients}+`||"5000+", label: 'Patients Treated', icon: <Users className="w-6 h-6 text-blue-600" /> },
+                { value: `${patients.toLocaleString()}+`, label: 'Patients Treated', icon: <Users className="w-6 h-6 text-blue-600" /> },
                 { value: '1+', label: 'Books Published', icon: <BookOpen className="w-6 h-6 text-green-600" /> },
-                { value: `${exp}+`||"10+", label: 'Years Experience', icon: <Award className="w-6 h-6 text-purple-600" /> }
+                { value: `${isNaN(exp) ? '10+' : exp + '+'}`, label: 'Years Experience', icon: <Award className="w-6 h-6 text-purple-600" /> }
               ].map((stat, index) => (
                 <motion.div
                   key={index}

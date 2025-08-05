@@ -1,39 +1,7 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { motion, AnimatePresence, useScroll, useTransform, useSpring } from 'framer-motion';
-import { 
-  Menu, 
-  X, 
-  BookOpen, 
-  Users, 
-  Award, 
-  Mail, 
-  Phone, 
-  MapPin,
-  Facebook,
-  Instagram,
-  Linkedin,
-  Youtube,
-  MessageCircle,
-  ShoppingCart,
-  Calendar,
-  FileText,
-  Star,
-  CheckCircle,
-  Send,
-  ArrowRight,
-  Globe,
-  Stethoscope,
-  Heart,
-  Leaf,
-  ArrowUp,
-  Download,
-  Play,
-  Pause,
-  Clock,
-  TrendingUp
-} from 'lucide-react';
+import { useEffect, useState } from 'react';
+import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
+import { Menu, X, BookOpen, Users, Mail, Heart, Stethoscope } from 'lucide-react';
 
-// Header Component
 export const HeaderBar = ({ activeSection, setActiveSection }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
@@ -52,35 +20,37 @@ export const HeaderBar = ({ activeSection, setActiveSection }) => {
     { id: 'hero', label: 'Home', icon: <Heart className="w-4 h-4" /> },
     { id: 'about', label: 'About', icon: <Users className="w-4 h-4" /> },
     { id: 'publications', label: 'Publications', icon: <BookOpen className="w-4 h-4" /> },
-    { id: 'contact', label: 'Contact', icon: <Mail className="w-4 h-4" /> }
+    { id: 'contact', label: 'Contact', icon: <Mail className="w-4 h-4" /> },
   ];
 
-  const scrollToSection = (sectionId) => {
+  const scrollToSection = (e, sectionId) => {
+    e.preventDefault(); // Prevent default behavior to avoid conflicts
     const element = document.getElementById(sectionId);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
       setActiveSection(sectionId);
-      setIsMenuOpen(false);
+      // Delay closing the menu to ensure scroll completes
+      setTimeout(() => setIsMenuOpen(false), 300);
     }
   };
 
   return (
-    <motion.header 
+    <motion.header
       style={{ y: headerY }}
       className={`fixed top-0 w-full z-50 transition-all duration-700 ${
-      isScrolled 
-        ? 'bg-white/90 backdrop-blur-xl shadow-2xl ' 
-        : 'bg-gradient-to-r from-white/80 to-blue-50/80 backdrop-blur-sm'
-       }`}
+        isScrolled
+          ? 'bg-white/90 backdrop-blur-xl shadow-2xl'
+          : 'bg-gradient-to-r from-white/80 to-blue-50/80 backdrop-blur-sm'
+      }`}
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-12 py-4">
         <div className="flex justify-between items-center">
-          <motion.div 
+          <motion.div
             className="flex items-center space-x-4"
             whileHover={{ scale: 1.05 }}
-            transition={{ type: "spring", stiffness: 300 }}
+            transition={{ type: 'spring', stiffness: 300 }}
           >
-            <motion.div 
+            <motion.div
               className="w-14 h-14 bg-gradient-to-br from-blue-500 to-purple-500 rounded-2xl flex items-center justify-center shadow-lg relative overflow-hidden"
               whileHover={{ rotate: 180 }}
               transition={{ duration: 0.8 }}
@@ -88,12 +58,12 @@ export const HeaderBar = ({ activeSection, setActiveSection }) => {
               <motion.div
                 className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent"
                 animate={{ rotate: 360 }}
-                transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
+                transition={{ duration: 8, repeat: Infinity, ease: 'linear' }}
               />
               <Stethoscope className="w-8 h-8 text-white relative z-10" />
             </motion.div>
             <div>
-              <motion.h2 
+              <motion.h2
                 className="text-2xl font-bold bg-gradient-to-r from-gray-900 to-blue-800 bg-clip-text text-transparent"
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
@@ -101,8 +71,7 @@ export const HeaderBar = ({ activeSection, setActiveSection }) => {
               >
                 Dr. Muhammed KS
               </motion.h2>
-
-              <motion.p 
+              <motion.p
                 className="text-sm text-gray-600 font-medium"
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
@@ -117,7 +86,7 @@ export const HeaderBar = ({ activeSection, setActiveSection }) => {
             {navItems.map((item, index) => (
               <motion.button
                 key={item.id}
-                onClick={() => scrollToSection(item.id)}
+                onClick={(e) => scrollToSection(e, item.id)}
                 whileHover={{ scale: 1.1, y: -2 }}
                 whileTap={{ scale: 0.95 }}
                 initial={{ opacity: 0, y: -20 }}
@@ -161,7 +130,7 @@ export const HeaderBar = ({ activeSection, setActiveSection }) => {
               {navItems.map((item, index) => (
                 <motion.button
                   key={item.id}
-                  onClick={() => scrollToSection(item.id)}
+                  onClick={(e) => scrollToSection(e, item.id)}
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.3, delay: index * 0.1 }}
