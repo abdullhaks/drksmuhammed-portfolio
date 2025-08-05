@@ -1,12 +1,12 @@
 import React, { useState,useEffect } from 'react'
-import { Header } from './components/header';
+
 import Hero from './components/Hero';
 import About from './components/About';
 import Publications from './components/Publications';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import { FloatingElements } from './sharedComponents/FloatingElement';
-
+import { HeaderBar } from './components/HeaderBar';
 const App = () => {
   const [activeSection, setActiveSection] = useState('hero');
 
@@ -30,7 +30,7 @@ const App = () => {
   return (
     <div className="min-h-screen font-sans relative overflow-x-hidden">
       <FloatingElements />
-      <Header activeSection={activeSection} setActiveSection={setActiveSection} />
+      <HeaderBar activeSection={activeSection} setActiveSection={setActiveSection} />
       <Hero activeSection={activeSection} setActiveSection={setActiveSection}/>
       <About />
       <Publications />

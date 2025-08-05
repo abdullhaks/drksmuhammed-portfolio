@@ -34,7 +34,7 @@ import {
 } from 'lucide-react';
 
 // Header Component
-export const Header = ({ activeSection, setActiveSection }) => {
+export const HeaderBar = ({ activeSection, setActiveSection }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const { scrollY } = useScroll();
