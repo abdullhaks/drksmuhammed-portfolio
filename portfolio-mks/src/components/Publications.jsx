@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence, useScroll, useTransform, useSpring } from 'framer-motion';
-import BOOK1 from "../assets/BOOK1.png"  
-import HERO from "../assets/HERO.jpg"
+import BOOK1 from "../assets/BOOK1.PNG"  
 import { 
   Menu, 
   X, 
@@ -58,10 +57,10 @@ const Publications = () => {
       title: "Poultry Health Through Homeopathy",
       description: "Revolutionary approaches to maintaining poultry health using homeopathic remedies and natural solutions.",
       pages: 256,
-      publishDate: "2022",
+      publishDate: "upcoming",
       publisher: "Veterinary Medicine Press",  
       readingAge: "Professional/Veterinary",
-      rating: 4.9,
+      rating: "",
       cover: "from-green-500 to-green-700",
       image: "photo-1481627834876-b7833e8f5570",
        amazone:"",

@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence, useScroll, useTransform, useSpring } from 'framer-motion';
-import HERO from "../assets/HERO.jpg";
+import HERO from "../assets/HERO.JPG";
 import { 
   Menu, 
   X, 
