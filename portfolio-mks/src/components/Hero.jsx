@@ -263,7 +263,7 @@ const Hero = ({ activeSection, setActiveSection }) => {
                     {stat.icon}
                   </motion.div>
                   <motion.div 
-                    className="text-2xl w-28 font-bold bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent"
+                    className="text-m w-20 font-bold bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent"
                     animate={{ scale: [1, 1.1, 1] }}
                     transition={{ duration: 2, repeat: Infinity, delay: index * 0.3 }}
                   >
