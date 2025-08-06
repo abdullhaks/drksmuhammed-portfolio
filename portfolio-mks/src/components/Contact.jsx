@@ -8,7 +8,7 @@ const Contact = () => {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const now = new Date();
-  const start = new Date('2015-01-01');
+  const start = new Date('2015-01-01'); 
   const exp = now.getFullYear() - start.getFullYear();
   const patients = isNaN(exp) ? 5000 : exp * 500;
 

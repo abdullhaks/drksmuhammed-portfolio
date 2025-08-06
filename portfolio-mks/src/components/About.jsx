@@ -38,10 +38,10 @@ import {
 const About = () => {
   const { scrollY } = useScroll();
   const y = useTransform(scrollY, [0, 1000], [0, -100]);
-  const now =  new Date();
-  const start = new Date("2015-1-1");
-  const exp = now.getFullYear()-start.getFullYear();
-  const patients = exp*500;
+  const now = new Date();
+  const start = new Date('2015-01-01'); // Use ISO format
+  const exp = now.getFullYear() - start.getFullYear();
+  const patients = isNaN(exp) ? 5000 : exp * 500;
   
   const specialties = [
     {
@@ -189,7 +189,7 @@ const About = () => {
                 <div className="flex items-center space-x-2">
                   <TrendingUp className="w-6 h-6 text-green-600" />
                   <div>
-                    <div className="text-lg font-bold text-gray-900">{patients}+</div>
+                    <div className="text-lg font-bold text-gray-900">{patients.toLocaleString()}+</div>
                     <div className="text-sm text-gray-600">Patients</div>
                   </div>
                 </div>
@@ -203,7 +203,7 @@ const About = () => {
                 <div className="flex items-center space-x-2">
                   <Award className="w-6 h-6 text-yellow-600" />
                   <div>
-                    <div className="text-lg font-bold text-gray-900">{exp}+</div>
+                    <div className="text-lg font-bold text-gray-900">{isNaN(exp) ? '10+' : exp + '+'}</div>
                     <div className="text-sm text-gray-600">Years</div>
                   </div>
                 </div>

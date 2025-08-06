@@ -41,7 +41,7 @@ const Hero = ({ activeSection, setActiveSection }) => {
   const { scrollY } = useScroll();
   const y1 = useTransform(scrollY, [0, 500], [0, 150]);
   const y2 = useTransform(scrollY, [0, 500], [0, -150]);
-  const opacity = useTransform(scrollY, [0, 2000], [1, 0]);
+  const opacity = useTransform(scrollY, [0, 4000], [1, 0]);
   const now = new Date();
   const start = new Date('2015-01-01'); // Use ISO format
   const exp = now.getFullYear() - start.getFullYear();
@@ -263,7 +263,7 @@ const Hero = ({ activeSection, setActiveSection }) => {
                     {stat.icon}
                   </motion.div>
                   <motion.div 
-                    className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent"
+                    className="text-3xl w-20 font-bold bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent"
                     animate={{ scale: [1, 1.1, 1] }}
                     transition={{ duration: 2, repeat: Infinity, delay: index * 0.3 }}
                   >
